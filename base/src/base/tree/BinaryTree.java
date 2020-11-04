@@ -18,18 +18,12 @@ public class BinaryTree<K extends Comparable,V> {
     public Node<K, V> getRoot() {
         return root;
     }
-
-    public void setRoot(Node<K, V> root) {
-        this.root = root;
-    }
-
+    
     public int getN() {
         return N;
     }
 
-    public void setN(int n) {
-        N = n;
-    }
+
 
     public void put(K key, V value){
 
@@ -39,6 +33,7 @@ public class BinaryTree<K extends Comparable,V> {
 
     private Node<K,V> put(Node<K,V> node, K key, V value) {
         if (node == null){
+            N++;
             return new Node<>(key,value);
         }
         //左子树
@@ -113,8 +108,10 @@ public class BinaryTree<K extends Comparable,V> {
         binaryTree.put(18,18);
         binaryTree.put(20,20);
         binaryTree.put(8,8);
+        binaryTree.put(8,8);
 
         List<Integer> integers = binaryTree.middleShow();
+        System.out.println(binaryTree.N);
         for (Integer integer : integers) {
 
             System.out.println(integer);
