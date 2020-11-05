@@ -20,12 +20,12 @@ public class SimpleQueue<T> implements Iterable<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return new MyIteraor();
+        return new MyIterator();
     }
 
-    private class MyIteraor implements Iterator<T>{
+    private class MyIterator implements Iterator<T>{
         private Node node;
-        private MyIteraor(){
+        private MyIterator(){
             node = root;
         }
 
@@ -58,7 +58,7 @@ public class SimpleQueue<T> implements Iterable<T> {
     }
 
     public boolean isEmpty(){
-        return N==0;
+        return N == 0;
     }
 
     public int size(){
