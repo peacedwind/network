@@ -18,7 +18,7 @@ public class BinaryTree<K extends Comparable,V> {
     public Node<K, V> getRoot() {
         return root;
     }
-    
+
     public int getN() {
         return N;
     }
@@ -58,7 +58,6 @@ public class BinaryTree<K extends Comparable,V> {
         }
 
         return node;
-
 
     }
 
