@@ -67,28 +67,26 @@ public class BinaryTree<K extends Comparable,V> {
      * @Param
      * @return
      */
-    public List<V> middleShow(){
+    public List<Node<K,V>> middleShow(){
         if (root == null){
             return new ArrayList<>();
         }
 
-        //先遍历左子树
         return middleShow(root);
-
 
     }
 
-    private List<V> middleShow(Node<K,V> root) {
+    private List<Node<K,V>> middleShow(Node<K,V> root) {
         Node left = root.getLeft();
         Node right = root.getRight();
-        ArrayList<V> result = new ArrayList<>();
+        ArrayList<Node<K,V>> result = new ArrayList<>();
         //先遍历左子树
         if (left != null){
             List listLeft = middleShow(left);
             result.addAll(listLeft);
         }
 
-        result.add(root.getValue());
+        result.add(root);
         if (right != null){
             List listRight = middleShow(right);
             result.addAll(listRight);
@@ -97,6 +95,96 @@ public class BinaryTree<K extends Comparable,V> {
         return result;
 
     }
+
+    /**
+     * @Description 前序遍历
+     * @Date 2020/11/5 8:43
+     * @Param
+     * @return
+     */
+    public List<Node<K,V>> beforeShow(){
+        if (root == null){
+            return new ArrayList();
+        }
+
+        return beforeShow(root);
+    }
+
+    private List<Node<K,V>> beforeShow(Node<K,V> root) {
+        //先便利自己
+        List<Node<K, V>> result = new ArrayList<>();
+        result.add(root);
+        //左子树
+        Node left = root.getLeft();
+        if (left != null){
+            result.addAll(beforeShow(left));
+        }
+
+        Node right = root.getRight();
+
+        if (right != null){
+            result.addAll(beforeShow(right));
+        }
+
+        return result;
+    }
+
+    /**
+     * @Description
+     * @Date 2020/11/5 8:51
+     * @Param
+     * @return
+     */
+    public List<Node<K,V>>  afterShow(){
+        if (root == null){
+            return new ArrayList<>();
+        }
+
+        return afterShow(root);
+
+    }
+
+    private List<Node<K, V>> afterShow(Node<K, V> root) {
+
+
+        //先便利自己
+        List<Node<K, V>> result = new ArrayList<>();
+        //左子树
+        Node left = root.getLeft();
+        if (left != null){
+            result.addAll(beforeShow(left));
+        }
+
+        Node right = root.getRight();
+
+        if (right != null){
+            result.addAll(beforeShow(right));
+        }
+
+        result.add(root);
+
+        return result;
+
+    }
+
+    /**
+     * @Description 层序遍历 需要借助队列实现 暂时放下 等写好队列的api了来实现
+     * @Date 2020/11/5 8:52
+     * @Param
+     * @return
+     */
+
+    public List<Node<K,V>> tierShow(){
+        if (root == null){
+            return new ArrayList<>();
+        }
+
+
+       return  null;
+
+    }
+
+
 
 
     public static void main(String[] args) {
@@ -109,12 +197,7 @@ public class BinaryTree<K extends Comparable,V> {
         binaryTree.put(8,8);
         binaryTree.put(8,8);
 
-        List<Integer> integers = binaryTree.middleShow();
-        System.out.println(binaryTree.N);
-        for (Integer integer : integers) {
 
-            System.out.println(integer);
-        }
 
 
     }
