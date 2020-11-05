@@ -7,4 +7,9 @@ package request._202011104;
  * @date: 2020/11/4 15:04
  */
 public class AllPermutation {
+
+
+    public static void main(String[] args) {
+
+    }
 }
