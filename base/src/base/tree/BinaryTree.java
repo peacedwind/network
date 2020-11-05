@@ -1,5 +1,7 @@
 package base.tree;
 
+import base.队列.SimpleQueue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -179,12 +181,34 @@ public class BinaryTree<K extends Comparable,V> {
             return new ArrayList<>();
         }
 
-
-       return  null;
+        return tierShow(root);
+        //return  null;
 
     }
 
+    private List<Node<K, V>> tierShow(Node<K, V> root) {
+        List<Node<K, V>> result = new ArrayList<>();
 
+        SimpleQueue<Node> nodes = new SimpleQueue<>();
+        nodes.enQueue(root);
+        while (!nodes.isEmpty()){
+            Node node = nodes.deQueue();
+            //获取左子树
+            Node left = node.getLeft();
+            if (left != null){
+                nodes.enQueue(left);
+            }
+            //获取右字数
+            Node right = node.getRight();
+            if (right != null){
+                nodes.enQueue(right);
+            }
+
+            result.add(node);
+        }
+        return result;
+
+    }
 
 
     public static void main(String[] args) {
@@ -197,7 +221,9 @@ public class BinaryTree<K extends Comparable,V> {
         binaryTree.put(8,8);
         binaryTree.put(8,8);
 
+        List<Node<Integer, Integer>> nodes = binaryTree.tierShow();
 
+        System.out.println(nodes);
 
 
     }
